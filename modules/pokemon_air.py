@@ -32,11 +32,10 @@ this Python class.
 
 
 # Source packages.
-import random
 
 from pokemon import Pokemon
+from random import randint
 from weapon_type import WeaponType
-
 
 class PokemonAir(Pokemon):
     """Python class to implement a basic version of a Pokemon of the game.
@@ -71,119 +70,13 @@ class PokemonAir(Pokemon):
       >>> from weapon_type import WeaponType
       >>> obj_Pokemon = PokemonEarth(1, "Pidgey", WeaponType.PUNCH, 100, 7, 10)
     """
-
-
-    def __init__(self, pokemon_id, pokemon_name, weapon_type, health_points,
-                 attack_rating, defense_rating):
-        """Constructor of the class.
-
-        This special method is executed when an object of this class is
-        created.
-
-        Syntax
-        ------
-          [ ] = __init__(self, id, pokemon_name, weapon_type, health_points,
-                         attack_rating, defense_rating)
-
-        Parameters
-        ----------
-          [in] self Python object that represents an instance of the
-                    class Pokemon.
-          [in] pokemon_id ID of Pokemon.
-          [in] pokemon_name Name of the Pokemon.
-          [in] weapon_type Type of weapon that carries out the Pokemon.
-          [in] health_points Points of health that the Pokemon has.
-          [in] attack_rating Attack rating of the Pokemon.
-          [in] defense_rating Defense rating of the Pokemon.
-
-        Returns
-        -------
-          obj Python object output parameter that represents an instance
-              of the class Pokemon.
-
-        Exceptions
-        ----------
-          TypeError:
-            If the parameter id is NOT a int.
-            If the parameter pokemon_name is NOT a String.
-            If the parameter weapon_type is NOT a enum WeaponType.
-            If the parameter health_points is NOT be an int.
-            If the parameter attack_rating is NOT be a int.
-            If the parameter defense_rating is NOT be a int.
-
-          ValueError:
-            If the parameter id is already found in other Pokemon.
-            If the parameter health_points is NOT > 0 and <= 100.
-            If the parameter attack_rating is NOT > 0 and <= 10.
-            If the parameter defense_rating is NOT > 0 and <= 10.
-
-        Example
-        -------
-          >>> from pokemon import Pokemon
-          >>> from weapon_type import WeaponType
-          >>> obj_Pokemon = PokemonEarth(1, "Pidgey", WeaponType.PUNCH, 100, 7, 10)
-        """
-
-        super().__init__(pokemon_id, pokemon_name, weapon_type, health_points,
-                         attack_rating, defense_rating)
-
-
-    def fight_defense(self, points_of_damage):
-        """Method to defense from a hit of other Pokemon.
-
-        Method that implements the defense of the Pokemon from a hit of other
-        Pokemon.
-
-        Syntax
-        ------
-          [ ] = obj_Pokemon.fight_defense(points_of_damage)
-
-        Parameters
-        ----------
-          [in] self Python object that represents an instance of the
-                    class Pokemon.
-          [in] int Points that represent the hit from another Pokemon.
-
-        Returns
-        -------
-
-        Exceptions
-        ----------
-        TypeError If the parameter points_of_damage is NOT an int.
-
-        Example
-        -------
-          >>> from Pokemon import Pokemon
-          >>> obj_Pokemon = Pokemon()
-          >>> obj_Pokemon.fight_defense(13)
-        """
-        if not isinstance(points_of_damage, int):
-            raise TypeError("The parameter points_of_damage should be an int.")
-
-        print("The Pokemon " + self._pokemon_name +
-              " has received an attack of " +
-              str(points_of_damage) + " points of damage.")
-
-        failure_probability = random.randrange(0, 2)
-
-        if failure_probability == 0:  # Normal defense applied.
-            if points_of_damage > self._defense_rating:
-                self._health_points = (self._health_points -
-                                       (points_of_damage - self._defense_rating))
-                pokemon_was_hit = True
-            else:
-                print("No damage received.")
-                pokemon_was_hit = False
-        else:
-            print("No damage received.")
-            pokemon_was_hit = False
-
-        # Normalizing the defeat of the Pokemon.
-        if self._health_points < 1:
-            self._health_points = 0
-
-        return pokemon_was_hit
-
+    def fight_defense (self,points_of_damage):
+      ran = randint(1,100)
+      if ran > 50:
+        return Pokemon.fight_defense(self,points_of_damage)
+      else:
+        return False
+    
 
 def main():
     """Function main of the module.

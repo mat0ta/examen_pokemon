@@ -34,7 +34,7 @@ This Python method contains the application of the Game.
 import csv
 import copy
 
-from weapon_type import WeaponType
+from pokemon import WeaponType
 from pokemon import Pokemon
 
 

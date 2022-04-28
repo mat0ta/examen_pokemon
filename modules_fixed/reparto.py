@@ -98,6 +98,7 @@ def elegirPokemons():
             if pokemons_entrenador_1['data'][index][4] > medias[1]:
                 pokemons_1.append(pokemons_entrenador_1['data'][index])
     print(pokemons_1, pokemons_2)
+    print(raw_entrenador_1['#'])
 
 
 elegirPokemons()
